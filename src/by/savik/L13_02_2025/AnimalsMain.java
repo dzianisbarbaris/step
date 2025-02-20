@@ -1,0 +1,57 @@
+package by.savik.L13_02_2025;
+
+// Спросить про геттеры у материнских/наследуемых классов //
+public class AnimalsMain {
+    public static void main(String[] args) {
+        Owner firstOwner = new Owner();
+        Owner secondOwner = new Owner();
+        Owner thirdOwner = new Owner();
+
+        Pet cat = new Cat("Мурка", 2);
+        Pet dog = new Dog("Барсик", 3);
+        Pet bird = new Bird("Кеша", 1);
+        Pet cat2 = new Cat("Блошка", 8);
+        Pet dog2 = new Dog("Мухтар", 1);
+
+        Pet[] pets = new Pet[]{cat};
+        for (int i = 0; i < pets.length; i++) {
+            secondOwner.addPet(dog2);
+            }
+        /*cat.setOwner(firstOwner);
+        dog.setOwner(secondOwner);
+        bird.setOwner(thirdOwner);
+        cat2.setOwner(firstOwner);*/
+
+
+
+        WildAnimal elephant = new Elephant("Джамбо", 10, "джунглях");
+        WildAnimal lion = new Lion("Симба", 5, "саванне");
+
+        for (Pet pet : pets) {
+            System.out.println(pet.toString());
+        }
+        System.out.println();
+
+        for (Pet pet : pets) {
+            System.out.println(pet);
+            System.out.println(pet.makeSound());
+            System.out.println(pet.move());
+            System.out.println(pet.eat());
+            System.out.println(pet.play());
+            System.out.println();
+        }
+
+        WildAnimal[] animals = {elephant, lion};
+        for (WildAnimal wildAnimal : animals) {
+            System.out.println(wildAnimal);
+            System.out.println(wildAnimal.makeSound());
+            System.out.println(wildAnimal.move());
+            System.out.println(wildAnimal.eat());
+            System.out.println(wildAnimal.hunt());
+            System.out.println();
+        }
+
+        System.out.println("Общее количество животных " + Animal.getTotalAnimals());
+        System.out.println("Общее количество владельцев " + Owner.getTotalOwners());
+    }
+}
