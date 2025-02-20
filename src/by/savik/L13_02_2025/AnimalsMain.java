@@ -13,15 +13,13 @@ public class AnimalsMain {
         Pet cat2 = new Cat("Блошка", 8);
         Pet dog2 = new Dog("Мухтар", 1);
 
-        Pet[] pets = new Pet[]{cat};
-        for (int i = 0; i < pets.length; i++) {
-            secondOwner.addPet(dog2);
-            }
-        /*cat.setOwner(firstOwner);
+        /*Pet[] pets = new Pet[]{cat, dog, bird, cat2};
+
+        cat.setOwner(firstOwner);
         dog.setOwner(secondOwner);
         bird.setOwner(thirdOwner);
-        cat2.setOwner(firstOwner);*/
-
+        cat2.setOwner(firstOwner);
+        secondOwner.addPet(dog2);*/
 
 
         WildAnimal elephant = new Elephant("Джамбо", 10, "джунглях");

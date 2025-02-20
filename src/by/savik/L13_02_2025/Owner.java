@@ -6,6 +6,7 @@ public class Owner {
     private int id;
     private String name;
     private String surName;
+    private String sex;
     private static String[] names = new String[5];
     private static String[] surNames = new String[5];
     private int size;
@@ -27,6 +28,7 @@ public class Owner {
         surNames[2] = "Савик";
         surNames[3] = "Розенблатт";
         surNames[4] = "Петренко";
+
     }
 
     private Random random = new Random();
@@ -34,6 +36,7 @@ public class Owner {
     public Owner() {
         this.name = names[random.nextInt(names.length)];
         this.surName = surNames[random.nextInt(names.length)];
+        this.sex = random.nextBoolean() ? "Мужской" : "Женский";
         this.id = ++totalOwners;
     }
 
@@ -43,6 +46,10 @@ public class Owner {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     public String getSurName() {
