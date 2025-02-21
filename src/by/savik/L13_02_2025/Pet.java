@@ -1,7 +1,7 @@
 package by.savik.L13_02_2025;
 
 public abstract class Pet extends Animal {
-    private Owner owner;
+    Owner owner;
     public Pet(String name, String species, int age) {
         super(name, species, age);
     }

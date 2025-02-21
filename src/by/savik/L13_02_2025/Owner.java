@@ -1,5 +1,6 @@
 package by.savik.L13_02_2025;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Owner {
@@ -12,7 +13,7 @@ public class Owner {
     private int size;
     private Pet[] pets = new Pet[0];
     private static int totalOwners = 0;
-
+    private int totalPets = 0;
     static {
         System.out.println("Класс Owner загружен в память!");
         System.out.println();
@@ -38,6 +39,15 @@ public class Owner {
         this.surName = surNames[random.nextInt(names.length)];
         this.sex = random.nextBoolean() ? "Мужской" : "Женский";
         this.id = ++totalOwners;
+    }
+
+    public int getTotalPets() {
+        return totalPets;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " " + getSurName() + " " + getTotalPets();
     }
 
     public String getName() {
@@ -84,13 +94,13 @@ public class Owner {
     public void addPet(Pet pet) {
         if (size < pets.length) {
             pets[size++] = pet;
-        }
-        else {
+        } else {
             Pet[] pets1 = new Pet[pets.length + 1];
             System.arraycopy(pets, 0, pets1, 0, pets.length);
             pets1[pets.length] = pet;
             pets = pets1;
-            pet.setOwner(this);
         }
+        pet.setOwner(this);
+        ++totalPets;
     }
 }
