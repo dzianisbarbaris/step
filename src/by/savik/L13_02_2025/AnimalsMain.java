@@ -3,7 +3,7 @@ package by.savik.L13_02_2025;
 public class AnimalsMain {
     public static void main(String[] args) {
 
-        Pet[] pets = new Pet[500];
+        Pet[] pets = new Pet[200];
         Owner[] owners = new Owner[100];
         for (Owner owner : owners) {
             owner = OwnerFactory.next();
