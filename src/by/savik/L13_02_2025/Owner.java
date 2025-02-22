@@ -14,6 +14,7 @@ public class Owner {
     private Pet[] pets = new Pet[0];
     private static int totalOwners = 0;
     private int totalPets = 0;
+
     static {
         System.out.println("Класс Owner загружен в память!");
         System.out.println();
@@ -24,11 +25,11 @@ public class Owner {
         names[3] = "Оля";
         names[4] = "Женя";
 
-        surNames[0] = "Моисенко";
+        surNames[0] = "Фёдоров";
         surNames[1] = "Коваленко";
         surNames[2] = "Савик";
-        surNames[3] = "Розенблатт";
-        surNames[4] = "Петренко";
+        surNames[3] = "Рожков";
+        surNames[4] = "Ануфриев";
 
     }
 
@@ -47,7 +48,7 @@ public class Owner {
 
     @Override
     public String toString() {
-        return getName() + " " + getSurName() + " " + getTotalPets();
+        return getName() + " " + getSurName() + " : количество питомцев - " + getTotalPets();
     }
 
     public String getName() {
