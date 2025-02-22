@@ -21,12 +21,6 @@ public abstract class Animal {
 
     public abstract String eat();
 
-    @Override
-    public String toString() {
-        return species + " по имени " + name + " , возраст: " + age
-        + " (ID: " + id + ")";
-    }
-
     public String getName() {
         return name;
     }
@@ -41,5 +35,11 @@ public abstract class Animal {
 
     public static int getTotalAnimals() {
         return totalAnimals;
+    }
+
+    @Override
+    public String toString() {
+        return species + " по имени " + name + " , возраст: " + age
+                + " (ID: " + id + ")";
     }
 }

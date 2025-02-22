@@ -2,7 +2,6 @@ package by.savik.L13_02_2025;
 
 public class Dog extends Pet {
 
-
     public Dog(String name, int age) {
         super(name, "собака", age);
     }
@@ -21,5 +20,4 @@ public class Dog extends Pet {
     public String eat() {
         return getName() + " ест собачий корм.";
     }
-
 }

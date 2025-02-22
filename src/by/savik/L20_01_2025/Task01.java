@@ -2,11 +2,7 @@ package by.savik.L20_01_2025;
 
 import by.savik.utils.ArrayUtil;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
-
-import static com.sun.jndi.toolkit.dir.DirSearch.search;
-import static java.util.Arrays.fill;
 
 public class Task01 {
     public static void main(String[] args) {
@@ -26,8 +22,8 @@ public class Task01 {
     private static void search() {
         int[] ints = ArrayUtil.generateIntArray(20, 0, 20);
         Arrays.sort(ints);
-        int index = Arrays.binarySearch(ints,5);
-        System.out.println(index >= 0 ? "Найден элемент по индексу " +index : "Не найден");
+        int index = Arrays.binarySearch(ints, 5);
+        System.out.println(index >= 0 ? "Найден элемент по индексу " + index : "Не найден");
 
     }
 

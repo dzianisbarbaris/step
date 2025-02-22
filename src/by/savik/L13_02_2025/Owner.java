@@ -1,6 +1,5 @@
 package by.savik.L13_02_2025;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Owner {
@@ -30,7 +29,6 @@ public class Owner {
         surNames[2] = "Савик";
         surNames[3] = "Рожков";
         surNames[4] = "Ануфриев";
-
     }
 
     private Random random = new Random();
@@ -44,11 +42,6 @@ public class Owner {
 
     public int getTotalPets() {
         return totalPets;
-    }
-
-    @Override
-    public String toString() {
-        return getName() + " " + getSurName() + " : количество питомцев - " + getTotalPets();
     }
 
     public String getName() {
@@ -91,7 +84,6 @@ public class Owner {
         return totalOwners;
     }
 
-
     public void addPet(Pet pet) {
         if (size < pets.length) {
             pets[size++] = pet;
@@ -103,5 +95,10 @@ public class Owner {
         }
         pet.setOwner(this);
         ++totalPets;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " " + getSurName() + " : количество питомцев - " + getTotalPets();
     }
 }

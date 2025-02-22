@@ -5,7 +5,7 @@ import java.util.Random;
 public class PetFactory {
     private static Random random = new Random();
     private static String[] petNames = new String[5];
-   
+
     static {
         petNames[0] = "Мурка";
         petNames[1] = "Барсик";

@@ -7,7 +7,6 @@ public abstract class WildAnimal extends Animal {
         super(name, species, age);
         this.habitat = habitat;
     }
-
     public abstract String hunt();
 
     public String getHabitat() {

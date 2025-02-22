@@ -2,7 +2,6 @@ package by.savik.L13_02_2025;
 
 public class Bird extends Pet {
 
-
     public Bird(String name, int age) {
         super(name, "птица", age);
     }
