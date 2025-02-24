@@ -1,6 +1,6 @@
 package by.savik.L13_02_2025;
 
-public class Bird extends Pet {
+public class Bird extends Pet implements Flyable, Swimable {
 
     public Bird(String name, int age) {
         super(name, "птица", age);
@@ -19,5 +19,15 @@ public class Bird extends Pet {
     @Override
     public String eat() {
         return getName() + " клюёт зёрна.";
+    }
+
+    @Override
+    public void fly() {
+        System.out.println(name + "летает");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println(name + "плывёт");
     }
 }

@@ -10,6 +10,8 @@ public class AnimalsMain {
             }
             System.out.println(owners[i]);
         }
+
+        Swimable[] swimables = new Swimable[1];
+        swimables[0] = new Bird("Кряква",2);
     }
 }
-
