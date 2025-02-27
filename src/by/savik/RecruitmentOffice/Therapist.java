@@ -2,8 +2,6 @@ package by.savik.RecruitmentOffice;
 
 public class Therapist extends Doc {
 
-    public Therapist() {
-    }
 
     @Override
     public void test(Recruit recruit) {
