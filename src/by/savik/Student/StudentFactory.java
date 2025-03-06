@@ -9,7 +9,7 @@ public class StudentFactory {
 
 
         public static Student next() {
-            int r = random.nextInt(6);
+            int r = random.nextInt(7);
             return new Student(studentNames.get(r), random.nextInt(20,30), random.nextDouble(4, 10));
         }
     }
