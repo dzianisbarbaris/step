@@ -1,19 +1,25 @@
 package by.savik.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentMain {
 
     public static void main(String[] args) {
-        List<Student> students = new ArrayList<>();
-        List<Student> students1 = new ArrayList<>();
+        final List<Student> students = new ArrayList<>();
+        final List<Student> students1 = new ArrayList<>();
         fillStudentsList(students);
         removeStudent(students, "Оля");
         addStudentsToList(students, students1);
         System.out.println(students1);
         System.out.println(findStudent(students, "Денис"));
-        replaceStudentByIndex(students, 2);
+        replaceStudentByIndex(students, 1);
+        System.out.println(students);
+        sortArray(students);
+        System.out.println(students);
+        sortByComparator(students, new StudentNameComparator());
         System.out.println(students);
     }
 
@@ -43,7 +49,17 @@ public class StudentMain {
     }
 
     public static void replaceStudentByIndex(List<Student> students, int index) {
+        if (students.size() < index || index < 0){
+            return;
+        }
         students.set(index, StudentFactory.next());
     }
+    private static void sortByComparator(List<Student> students, Comparator<Student> comparator){
+        students.sort(comparator);
+        /*Collections.sort(students, comparator);*/
+    }
 
+    private static void sortArray(List<Student> students) {
+        Collections.sort(students);
+    }
 }
