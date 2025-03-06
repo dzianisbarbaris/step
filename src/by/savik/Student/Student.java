@@ -1,9 +1,9 @@
 package by.savik.Student;
 
 public class Student {
-    private String name;
-    private int age;
-    private double grade;
+    private final String name;
+    private final int age;
+    private final double grade;
 
     public Student(String name, int age, double grade) {
         this.name = name;
@@ -25,11 +25,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", grade=" + grade +
-                '}';
+        return getName() + " Возраст : " + getAge() + " Средний балл : " + getGrade();
     }
 
 }

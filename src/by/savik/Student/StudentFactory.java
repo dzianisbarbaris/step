@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 public class StudentFactory {
-        private static Random random = new Random();
-        private static List<String> studentNames = List.of("Денис", "Семён", "Олег", "Слава", "Виктор", "Оля", "Настя");
+        private static final Random random = new Random();
+        private static final List<String> studentNames = List.of("Денис", "Семён", "Олег", "Слава", "Виктор", "Оля", "Настя");
 
 
         public static Student next() {
