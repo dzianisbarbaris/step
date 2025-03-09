@@ -1,20 +1,24 @@
 package by.savik.Transport;
 
 
+import java.util.List;
 import java.util.Random;
 
 public class TransportFactory {
     private static final Random random = new Random();
-    private static String[] transportNames = new String[]{"Мерседес", "BMW", "Honda", "Suzuki"};
-    private static String[] fuelTypes = new String[]{"Газ", "Дизель", "Бензин", "Электро"};
+    private static final List<String> transportNames = List.of("Mercedes", "BMW", "Honda", "Suzuki");
+    private static final List<String> fuelTypes= List.of("Газ", "Дизель", "Бензин", "Электро");
+
 
     public static Transport next() {
+        String transportName = transportNames.get(random.nextInt(transportNames.size()));
+        String fuelType = fuelTypes.get(random.nextInt(fuelTypes.size()));
         int i = random.nextInt(3);
         if (i == 0) {
-            return new Car(transportNames[random.nextInt(transportNames.length)], random.nextInt(120,1500), fuelTypes[random.nextInt(fuelTypes.length)]);
+            return new Car(transportName, random.nextInt(120,180), fuelType);
         } else if (i == 1) {
-            return new Bike(transportNames[random.nextInt(transportNames.length)], random.nextInt(180,280), random.nextBoolean());
+            return new Bike(transportName, random.nextInt(180,280), random.nextBoolean());
         }
-        else return new Truck(transportNames[random.nextInt(transportNames.length)], random.nextInt(1,10), random.nextInt(5,20));
+        else return new Truck(transportName, random.nextInt(72,150), random.nextInt(5,20));
     }
 }

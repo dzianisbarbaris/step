@@ -1,28 +1,39 @@
 package by.savik.Transport;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TransportManager {
     private static List<Transport> transportList = new ArrayList<>();
     private static Set<Transport> uniqueTransportSet = new HashSet<>();
 
 
-    public static void addTransport(List<Transport> transportList, Set<Transport> transportSet){
-        for (int i = 0; i < 10; i++){
+
+    public static void addTransport(int transportNum){
+        for (int i = 0; i < transportNum; i++){
             transportList.add(TransportFactory.next());
-            transportSet.add(TransportFactory.next());
+            uniqueTransportSet.add(TransportFactory.next());
         }
     }
 
-    public static void removeTransport(List<Transport> transportList, Set<Transport> uniqueTransportSet, String model){
+    public static void removeTransport(String model){
         transportList.removeIf(transport -> transport.getModel().equals(model));
         uniqueTransportSet.removeIf(transport -> transport.getModel().equals(model));
     }
 
-    public static void sortTransportBySpeed(List<Transport> transportList, Set<Transport> transportSet){
-
+    public static void sortTransportBySpeed(){
+        transportList.sort(Comparator.comparing(Transport::getSpeed));
     }
+
+    public static void sortTransportByModel() {
+        transportList.sort(Comparator.comparing(Transport::getModel));
+    }
+
+    public static void printAllTransport(){
+        System.out.println(transportList);
+    }
+
+    public static void printUniqueTransport(){
+        System.out.println(uniqueTransportSet);
+    }
+
 }

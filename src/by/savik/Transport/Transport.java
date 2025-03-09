@@ -23,12 +23,21 @@ public abstract class Transport implements Comparable<Transport>{
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Transport transport = (Transport) o;
-        return speed == transport.speed;
+        return Objects.equals(model, transport.model);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(speed);
+        return Objects.hashCode(model);
+    }
+
+    @Override
+    public int compareTo(Transport o) {
+        int modelCompare = this.model.compareTo(o.model);
+        if(modelCompare != 0) {
+            return modelCompare;
+        }
+        return Integer.compare(this.speed, o.speed);
     }
 
     @Override
@@ -36,8 +45,5 @@ public abstract class Transport implements Comparable<Transport>{
         return "Транспорт " + model + " с максимальной скоростью: " + speed;
     }
 
-    @Override
-    public int compareTo(Transport o) {
-        return 0;
-    }
+
 }
