@@ -3,37 +3,53 @@ package by.savik.Transport;
 import java.util.*;
 
 public class TransportManager {
-    private static List<Transport> transportList = new ArrayList<>();
-    private static Set<Transport> uniqueTransportSet = new HashSet<>();
+    private Map<String, Transport> transportByPlate = new HashMap<>();
+    private Map<String, List<Transport>> transportByType = new HashMap<>();
 
 
-
-    public static void addTransport(int transportNum){
-        for (int i = 0; i < transportNum; i++){
-            transportList.add(TransportFactory.next());
-            uniqueTransportSet.add(TransportFactory.next());
+    public void addTransport(int transportNum) {
+        for (int i = 0; i < transportNum; i++) {
+            Transport transport = TransportFactory.next();
+            transportByPlate.putIfAbsent(transport.getLicensePlate(), transport);
+            String type = transport.getClass().getSimpleName();
+            transportByType.putIfAbsent(type, new ArrayList<>());
+            transportByType.get(type).add(transport);
         }
     }
 
-    public static void removeTransport(String model){
-        transportList.removeIf(transport -> transport.getModel().equals(model));
-        uniqueTransportSet.removeIf(transport -> transport.getModel().equals(model));
+    public void removeTransport(String licensePlate) {
+        transportByPlate.remove(licensePlate);
+        if (transportByPlate.get(licensePlate) != null) {
+            String type = transportByPlate.get(licensePlate).getClass().getSimpleName();
+            transportByType.get(type).remove(licensePlate);
+        }
     }
 
-    public static void sortTransportBySpeed(){
-        transportList.sort(Comparator.comparing(Transport::getSpeed));
+
+    public Transport findTransportByPlate(String licensePlate){
+        if (transportByPlate.get(licensePlate) == null) {
+            System.out.println("такого номера нет");
+            return null;
+        }
+        return transportByPlate.get(licensePlate);
     }
 
-    public static void sortTransportByModel() {
-        transportList.sort(Comparator.comparing(Transport::getModel));
+    public List<Transport> getTransportByType(String type) {
+        return transportByType.get(type);
     }
 
-    public static void printAllTransport(){
-        System.out.println(transportList);
+    public Transport getFastestTransportByType(String type) {
+        List<Transport> transportsBySpeed = transportByType.get(type);
+        transportsBySpeed.sort(new TransportSpeedComparator());
+        return transportsBySpeed.getLast();
     }
 
-    public static void printUniqueTransport(){
-        System.out.println(uniqueTransportSet);
+
+    public void printAllTransport(){
+        System.out.println(transportByPlate);
     }
 
+    public void printTransportByType(){
+        System.out.println(transportByType);
+    }
 }
