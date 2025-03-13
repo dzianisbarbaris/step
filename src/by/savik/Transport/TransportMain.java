@@ -15,5 +15,9 @@ public class TransportMain {
         transportManager.findTransportByPlate("5555");
         transportManager.getTransportByType("Car");
         transportManager.getFastestTransportByType("Truck");
+
+
+        Boolean aTrue = Boolean.TRUE;
+
     }
 }

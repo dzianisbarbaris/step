@@ -3,8 +3,8 @@ package by.savik.Transport;
 import java.util.*;
 
 public class TransportManager {
-    private static final Map<String, Transport> transportByPlate = new HashMap<>();
-    private static final Map<String, List<Transport>> transportByType = new HashMap<>();
+    private final Map<String, Transport> transportByPlate = new HashMap<>();
+    private final Map<String, List<Transport>> transportByType = new HashMap<>();
 
 
     public void addTransport(int transportNum) {
