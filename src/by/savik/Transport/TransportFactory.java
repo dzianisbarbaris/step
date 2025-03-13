@@ -9,6 +9,8 @@ public class TransportFactory {
     private static final List<String> transportNames = List.of("Mercedes", "BMW", "Honda", "Suzuki");
     private static final List<String> fuelTypes= List.of("Газ", "Дизель", "Бензин", "Электро");
 
+    private TransportFactory() {
+    }
 
     public static Transport next() {
         String transportName = transportNames.get(random.nextInt(transportNames.size()));
