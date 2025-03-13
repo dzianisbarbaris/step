@@ -1,38 +1,32 @@
-package by.savik.L27_02_2025;
+package by.savik.Transport2;
 
 import java.util.Objects;
 
 public class User implements Cloneable {
     private final String name;
-    private final int age;
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
-    public User(String name, int age) {
+    public User(String name) {
         this.name = name;
-        this.age = age;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return age == user.age && Objects.equals(name, user.name);
+        return Objects.equals(name, user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age);
+        return Objects.hash(name);
     }
 }
