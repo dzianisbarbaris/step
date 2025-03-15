@@ -44,10 +44,10 @@ public class TransportUserManager {
     }
 
     public void printAllOwnersAndTransport() {
-            for (Map.Entry<User, List<Transport>> owner : transportByOwner.entrySet()){
-                System.out.println(owner.getKey());
-                System.out.println(owner.getValue());
-                System.out.println(" ");
-            }
+        for (Map.Entry<User, List<Transport>> owner : transportByOwner.entrySet()) {
+            System.out.println(owner.getKey());
+            System.out.println(owner.getValue());
+            System.out.println(" ");
         }
     }
+}

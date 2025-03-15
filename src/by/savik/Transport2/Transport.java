@@ -54,7 +54,7 @@ public abstract class Transport implements Comparable<Transport> {
     @Override
     public int compareTo(Transport o) {
         int licenseCompare = this.model.compareTo(o.model);
-        if(licenseCompare != 0) {
+        if (licenseCompare != 0) {
             return licenseCompare;
         }
         return Integer.compare(this.speed, o.speed);
@@ -62,7 +62,7 @@ public abstract class Transport implements Comparable<Transport> {
 
     @Override
     public String toString() {
-        return "Транспорт " + model + " с максимальной скоростью: " + speed + " номерной знак " + licensePlate;
+        return "Транспорт " + model + " с максимальной скоростью: " + speed + "км/ч. номерной знак: " + licensePlate + ". год выпуска:" + year + ".";
     }
 
 }
