@@ -14,6 +14,6 @@ public class Truck extends Transport {
 
     @Override
     public String toString() {
-        return super.toString() + " грузоподъёмностью " + loadCapacity + " тонн.";
+        return super.toString() + " грузоподъёмностью " + loadCapacity + " тонн." + "\n";
     }
 }

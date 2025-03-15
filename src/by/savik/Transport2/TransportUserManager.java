@@ -7,6 +7,7 @@ public class TransportUserManager {
 
     public void addTransport(Transport transport) {
         transportByOwner.putIfAbsent(transport.getUser(), new ArrayList<>());
+        transportByOwner.get(transport.getUser()).add(transport);
     }
 
     public List<Transport> getTransportByOwner(User owner) {
@@ -43,6 +44,10 @@ public class TransportUserManager {
     }
 
     public void printAllOwnersAndTransport() {
-        System.out.println(transportByOwner);
+            for (Map.Entry<User, List<Transport>> owner : transportByOwner.entrySet()){
+                System.out.println(owner.getKey());
+                System.out.println(owner.getValue());
+                System.out.println(" ");
+            }
+        }
     }
-}

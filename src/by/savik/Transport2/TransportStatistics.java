@@ -9,7 +9,7 @@ public class TransportStatistics {
 
 
     public void addTransport(Transport transport) {
-        brandCount.put(transport.getModel(),  );
+
     }
 
     public int getBrandCount(String brand){

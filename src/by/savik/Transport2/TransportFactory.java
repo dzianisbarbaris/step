@@ -12,7 +12,7 @@ public class TransportFactory {
     private TransportFactory() {
     }
 
-    public static List<Transport> next() {
+    public static Transport next() {
         String transportName = transportNames.get(random.nextInt(transportNames.size()));
         String fuelType = fuelTypes.get(random.nextInt(fuelTypes.size()));
         String randomPlate = String.valueOf(random.nextInt(1000, 9999));

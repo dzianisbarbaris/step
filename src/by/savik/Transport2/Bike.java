@@ -14,6 +14,6 @@ public class Bike extends Transport {
 
     @Override
     public String toString() {
-        return super.toString() + (hasSidecar? " с коляской." : " без коляски.");
+        return super.toString() + (hasSidecar ? " с коляской." : " без коляски.") + "\n";
     }
 }
