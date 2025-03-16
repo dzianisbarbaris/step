@@ -3,7 +3,7 @@ package by.savik.Transport2;
 import java.util.*;
 
 public class TransportAnalytics {
-    private static List<Transport> transportsAnalytics = new ArrayList<>();
+    private final List<Transport> transportsAnalytics = new ArrayList<>();
 
     public void addTransport(Transport transport) {
         transportsAnalytics.add(transport);
@@ -11,21 +11,23 @@ public class TransportAnalytics {
 
     public List<Transport> filterByYear(int year) {
         List<Transport> filteredByYear = new ArrayList<>();
-        filteredByYear.addAll(transportsAnalytics);
-        filteredByYear.removeIf(transport -> transport.getYear() > year);
-        System.out.println("Автомобили старше " + year + " года выпуска:");
-        System.out.println(filteredByYear);
+        for(Transport tr: transportAnalytics){
+            if(tr.getYear <= year){
+                filteredByYear.add(tr);
+            }
+        }
         return filteredByYear;
     }
 
     public List<Transport> findTop3Fastest() {
         List<Transport> top3Fastest = new ArrayList<>();
+        int size = transportsAnalytics.size();
         transportsAnalytics.sort(new TransportSpeedComparator());
-        for (int i = transportsAnalytics.size() - 3; i < transportsAnalytics.size(); i++) {
-            top3Fastest.add(transportsAnalytics.get(i));
+        if (transportsAnalytics.size() >= 3){
+            top3Fastest.add(transportsAnalytics.get(size-1));
+            top3Fastest.add(transportsAnalytics.get(size-2));
+            top3Fastest.add(transportsAnalytics.get(size-3));
         }
-        System.out.println("Три самых быстрых транспорта:");
-        System.out.println(top3Fastest);
         return top3Fastest;
     }
 
@@ -34,24 +36,21 @@ public class TransportAnalytics {
         for (Transport transport : transportsAnalytics) {
             uniqueBrands.add(transport.getModel());
         }
-        System.out.println("Список уникальных брендов транспорта:");
-        System.out.println(uniqueBrands);
         return uniqueBrands;
     }
 
     public Map<String, List<Transport>> groupBySpeedRange() {
         Map<String, List<Transport>> rangeBySpeed = Map.of("Медленный", new ArrayList<>(), "Средний", new ArrayList<>(), "Быстрый", new ArrayList<>());
-        for (int i = 0; i < transportsAnalytics.size(); i++) {
-            if (transportsAnalytics.get(i).getSpeed() < 100) {
-                rangeBySpeed.get(rangeBySpeed.get("Медленный").add(transportsAnalytics.get(i)));
-            } else if (transportsAnalytics.get(i).getSpeed() >= 100 && transportsAnalytics.get(i).getSpeed() <= 200) {
-                rangeBySpeed.get(rangeBySpeed.get("Средний").add(transportsAnalytics.get(i)));
-            } else rangeBySpeed.get(rangeBySpeed.get("Быстрый").add(transportsAnalytics.get(i)));
+        for (Transport tr: transportsAnalytics) {
+            if (tr.getSpeed() < 100) {
+                rangeBySpeed.get("Медленный").add(tr);
+            } else if (tr.getSpeed() >= 100 && tr.getSpeed() <= 200) {
+                rangeBySpeed.get("Средний").add(tr);
+            } else {
+                rangeBySpeed.get("Быстрый").add(tr);
+            }
         }
-        System.out.println("Группировка транспорта по скорости:");
-        System.out.println(rangeBySpeed);
         return rangeBySpeed;
     }
-
 
 }
