@@ -5,13 +5,14 @@ import java.util.Objects;
 public class User implements Cloneable {
     private final String name;
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
     public User(String name) {
         this.name = name;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public String getName() {

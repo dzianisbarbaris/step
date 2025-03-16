@@ -14,10 +14,9 @@ public class TransportSpeedGrouper {
     }
 
     public Set<Transport> getTransportBySpeed(int speed) {
-        System.out.println(transportBySpeed.get(speed));
+        System.out.println(transportBySpeed.containsKey(speed) ? transportBySpeed.get(speed) : "Транспорта с такой скоростью нет.");
         return transportBySpeed.get(speed);
     }
-
 
 }
 

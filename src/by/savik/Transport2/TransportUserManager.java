@@ -10,7 +10,14 @@ public class TransportUserManager {
         transportByOwner.get(transport.getUser()).add(transport);
     }
 
+    public void addTransportForUser(User owner, Transport transport) {
+        if (transportByOwner.containsKey(owner)) {
+            transportByOwner.get(owner).add(transport);
+        } else transportByOwner.put(owner, new ArrayList<>());
+    }
+
     public List<Transport> getTransportByOwner(User owner) {
+        System.out.println("Транспорт владельца: " + owner + " \n " + transportByOwner.get(owner));
         return transportByOwner.get(owner);
     }
 
@@ -21,8 +28,8 @@ public class TransportUserManager {
             Transport next = iterator.next();
             if (licensePlate.equals(next.getLicensePlate())) {
                 iterator.remove();
-            } else {
-                System.out.println("Транспорта с таким номером у владельца нет");
+                System.out.println("Удалён транспорт с номером: " + licensePlate);
+                break;
             }
         }
     }
@@ -30,6 +37,7 @@ public class TransportUserManager {
     public Transport getFastestTransport(User owner) {
         List<Transport> transportsBySpeed = transportByOwner.get(owner);
         transportsBySpeed.sort(new TransportSpeedComparator());
+        System.out.println("Самый быстрый транспорт владельца: " + owner + "\n" + transportsBySpeed.getLast());
         return transportsBySpeed.getLast();
     }
 
@@ -40,10 +48,13 @@ public class TransportUserManager {
             User value = entry.getKey();
             ownersCarsNum.put(size, value);
         }
+        System.out.println("Владелец с самым большим числом транспорта: " + ownersCarsNum.lastEntry().getValue());
+        System.out.println("Количество единиц транспорта: " + ownersCarsNum.lastEntry().getKey());
         return ownersCarsNum.lastEntry().getValue();
     }
 
     public void printAllOwnersAndTransport() {
+        System.out.println("Список всех владельцев и их транспорта: ");
         for (Map.Entry<User, List<Transport>> owner : transportByOwner.entrySet()) {
             System.out.println(owner.getKey());
             System.out.println(owner.getValue());
