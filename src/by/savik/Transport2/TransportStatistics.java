@@ -7,7 +7,7 @@ public class TransportStatistics {
     private final Map<String, Integer> brandCount = new HashMap<>();
 
     public void addTransport(Transport transport) {
-        String model = transport.getModel()
+        String model = transport.getModel();
         if(brandCount.containsKey(model)){
             int count = brandCount.get(model);
             brandCount.put(model, ++count);

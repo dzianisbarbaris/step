@@ -11,8 +11,8 @@ public class TransportAnalytics {
 
     public List<Transport> filterByYear(int year) {
         List<Transport> filteredByYear = new ArrayList<>();
-        for(Transport tr: transportAnalytics){
-            if(tr.getYear <= year){
+        for(Transport tr: transportsAnalytics){
+            if(tr.getYear() <= year){
                 filteredByYear.add(tr);
             }
         }
