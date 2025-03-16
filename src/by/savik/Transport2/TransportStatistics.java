@@ -4,14 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TransportStatistics {
-    private Map<String, Integer> brandCount = new HashMap<>();
+    private final Map<String, Integer> brandCount = new HashMap<>();
 
     public void addTransport(Transport transport) {
-        brandCount.put(transport.getModel(), brandCount.get(transport.getModel()) == null ? 1 : brandCount.get(transport.getModel()) + 1);
+        String model = transport.getModel()
+        if(brandCount.containsKey(model)){
+            int count = brandCount.get(model);
+            brandCount.put(model, ++count);
+        }
+        else{
+            brandCount.put(model, 1);
+        }
     }
 
     public int getBrandCount(String brand) {
-        System.out.println("Количество единиц транспорта бренда: " + brand + "\n" + brandCount.get(brand));
         return brandCount.get(brand);
     }
 
