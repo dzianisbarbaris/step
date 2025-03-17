@@ -73,8 +73,6 @@ public class TransportService {
             top3MostPopularBrands.add(allBrands.get(size-2));
             top3MostPopularBrands.add(allBrands.get(size-3));
         }
-        System.out.println(top3BrandsSorted);
-        System.out.println(top3MostPopularBrands);
         return top3MostPopularBrands;
     }
 
