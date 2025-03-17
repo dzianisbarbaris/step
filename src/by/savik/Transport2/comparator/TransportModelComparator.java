@@ -1,4 +1,6 @@
-package by.savik.Transport2;
+package by.savik.Transport2.comparator;
+
+import by.savik.Transport2.model.Transport;
 
 import java.util.Comparator;
 

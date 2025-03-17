@@ -1,5 +1,8 @@
 package by.savik.Transport2;
 
+import by.savik.Transport2.factory.TransportFactory;
+import by.savik.Transport2.manager.*;
+
 public class TransportMain {
     public static void main(String[] args) {
 
@@ -9,9 +12,9 @@ public class TransportMain {
         TransportStatistics transportStatistics = new TransportStatistics();
         TransportAnalytics transportAnalytics = new TransportAnalytics();
         TransportSpeedGrouper transportSpeedGrouper = new TransportSpeedGrouper();
-        User owner = new User("Олег");
+        TransportService transportService = new TransportService();
 
-        // TransportUserManager и все его методы
+        /*// TransportUserManager и все его методы
         for (int i = 0; i < 20; i++) {
             transportUserManager.addTransport(TransportFactory.next());
         }
@@ -49,6 +52,13 @@ public class TransportMain {
         System.out.println(" ");
         transportAnalytics.getUniqueBrands();
         System.out.println(" ");
-        transportAnalytics.groupBySpeedRange();
+        transportAnalytics.groupBySpeedRange();*/
+
+        for (int i = 0; i < 100; i++) {
+            transportService.addTransport(TransportFactory.next());
+        }
+
+        transportService.findTop3MostPopularBrands();
+
     }
 }

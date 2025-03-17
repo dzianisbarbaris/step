@@ -1,4 +1,7 @@
-package by.savik.Transport2;
+package by.savik.Transport2.manager;
+
+import by.savik.Transport2.model.Transport;
+import by.savik.Transport2.comparator.TransportSpeedComparator;
 
 import java.util.*;
 
@@ -11,8 +14,8 @@ public class TransportAnalytics {
 
     public List<Transport> filterByYear(int year) {
         List<Transport> filteredByYear = new ArrayList<>();
-        for(Transport tr: transportsAnalytics){
-            if(tr.getYear() <= year){
+        for (Transport tr : transportsAnalytics) {
+            if (tr.getYear() <= year) {
                 filteredByYear.add(tr);
             }
         }
@@ -23,11 +26,12 @@ public class TransportAnalytics {
         List<Transport> top3Fastest = new ArrayList<>();
         int size = transportsAnalytics.size();
         transportsAnalytics.sort(new TransportSpeedComparator());
-        if (transportsAnalytics.size() >= 3){
-            top3Fastest.add(transportsAnalytics.get(size-1));
-            top3Fastest.add(transportsAnalytics.get(size-2));
-            top3Fastest.add(transportsAnalytics.get(size-3));
+        if (transportsAnalytics.size() >= 3) {
+            top3Fastest.add(transportsAnalytics.get(size - 1));
+            top3Fastest.add(transportsAnalytics.get(size - 2));
+            top3Fastest.add(transportsAnalytics.get(size - 3));
         }
+        System.out.println(top3Fastest);
         return top3Fastest;
     }
 
@@ -41,7 +45,7 @@ public class TransportAnalytics {
 
     public Map<String, List<Transport>> groupBySpeedRange() {
         Map<String, List<Transport>> rangeBySpeed = Map.of("Медленный", new ArrayList<>(), "Средний", new ArrayList<>(), "Быстрый", new ArrayList<>());
-        for (Transport tr: transportsAnalytics) {
+        for (Transport tr : transportsAnalytics) {
             if (tr.getSpeed() < 100) {
                 rangeBySpeed.get("Медленный").add(tr);
             } else if (tr.getSpeed() >= 100 && tr.getSpeed() <= 200) {
@@ -52,5 +56,4 @@ public class TransportAnalytics {
         }
         return rangeBySpeed;
     }
-
 }

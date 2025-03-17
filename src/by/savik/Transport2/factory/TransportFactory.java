@@ -1,5 +1,10 @@
-package by.savik.Transport2;
+package by.savik.Transport2.factory;
 
+
+import by.savik.Transport2.model.Bike;
+import by.savik.Transport2.model.Car;
+import by.savik.Transport2.model.Transport;
+import by.savik.Transport2.model.Truck;
 
 import java.util.List;
 import java.util.Random;

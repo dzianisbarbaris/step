@@ -1,4 +1,4 @@
-package by.savik.Transport2;
+package by.savik.Transport2.model;
 
 public class Truck extends Transport {
     private int loadCapacity;

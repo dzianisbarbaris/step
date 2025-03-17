@@ -1,4 +1,4 @@
-package by.savik.Transport2;
+package by.savik.Transport2.model;
 
 public class Car extends Transport {
     private String fuelType;

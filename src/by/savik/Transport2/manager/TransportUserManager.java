@@ -1,4 +1,8 @@
-package by.savik.Transport2;
+package by.savik.Transport2.manager;
+
+import by.savik.Transport2.model.Transport;
+import by.savik.Transport2.model.User;
+import by.savik.Transport2.comparator.TransportSpeedComparator;
 
 import java.util.*;
 

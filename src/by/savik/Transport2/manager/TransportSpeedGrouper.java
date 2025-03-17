@@ -1,4 +1,6 @@
-package by.savik.Transport2;
+package by.savik.Transport2.manager;
+
+import by.savik.Transport2.model.Transport;
 
 import java.util.Map;
 import java.util.Set;

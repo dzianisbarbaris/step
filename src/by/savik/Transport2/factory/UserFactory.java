@@ -1,4 +1,6 @@
-package by.savik.Transport2;
+package by.savik.Transport2.factory;
+
+import by.savik.Transport2.model.User;
 
 import java.util.List;
 import java.util.Random;
