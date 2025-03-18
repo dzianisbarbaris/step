@@ -6,7 +6,6 @@ import by.savik.Transport2.manager.*;
 public class TransportMain {
     public static void main(String[] args) {
 
-        //ЕСЛИ ЭТО ВЫГЛЯДИТ ХЕРОВО, НО РАБОТАЕТ - ТО ЭТО НЕ ХЕРОВО!)
 
         TransportUserManager transportUserManager = new TransportUserManager();
         TransportStatistics transportStatistics = new TransportStatistics();
@@ -57,8 +56,18 @@ public class TransportMain {
         for (int i = 0; i < 100; i++) {
             transportService.addTransport(TransportFactory.next());
         }
-
+        transportService.findOwnerByLicensePlate("1234");
         transportService.findTop3MostPopularBrands();
+        transportService.groupByAge();
+        transportService.groupOwnersByCarCount();
+        transportService.countTransportByType();
+        transportService.findOwnerWithOldestCar();
+        transportService.findOwnersWithSingleBrand();
+        transportService.findOwnersWithCarAndBike();
+        transportService.getAverageCarAge();
+        System.out.println(transportService.getAverageCarAge());
+
+
 
     }
 }
