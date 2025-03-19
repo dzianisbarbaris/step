@@ -184,12 +184,10 @@ public class TransportService {
     public double getAverageCarAge() {
         double ageSum = 0;
         int currentYear = 2025;
-        for (Transport transport : transports){
+        for (Transport transport : transports) {
             int transportAge = currentYear - transport.getYear();
             ageSum += transportAge;
         }
-        return ageSum/transports.size();
+        return ageSum / transports.size();
     }
-
-
 }
