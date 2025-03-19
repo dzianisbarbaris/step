@@ -115,17 +115,8 @@ public class TransportService {
         int oldestTransportYear = transports.getLast().getYear();
         for (Transport transport : transports) {
             User user = transport.getUser();
-            if (transportByUser.containsKey(user)) {
-                transportByUser.get(user).add(transport);
-            } else {
-                transportByUser.put(user, new ArrayList<>());
-            }
-        }
-        for (Map.Entry<User, List<Transport>> entry : transportByUser.entrySet()) {
-            for (Transport transport : entry.getValue()) {
-                if (transport.getYear() == oldestTransportYear) {
-                    ownersWithOldestCar.add(entry.getKey());
-                }
+            if(oldestTransportYear == transport.getYear()){
+                ownersWithOldestCar.put(user);
             }
         }
         return ownersWithOldestCar;
@@ -151,6 +142,9 @@ public class TransportService {
                     ownersWithSingleBrand.add(entry.getKey());
                 }
             }
+            else {
+                 ownersWithSingleBrand.add(entry.getKey());
+            }
 
         }
         return ownersWithSingleBrand;
@@ -168,13 +162,22 @@ public class TransportService {
             }
         }
         for (Map.Entry<User, List<Transport>> entry : transportByUser.entrySet()) {
-            List<String> simpleNames = new ArrayList<>();
-            if (entry.getValue().size() > 1) {
-                for (Transport transport : entry.getValue()) {
-                    simpleNames.add(transport.getClass().getSimpleName());
+            User owner = entry.getKey();
+            List<Transport> transports = entry.getValue();
+            if (transports.size() > 1) {
+                boolean hasCar = false;
+                boolean hasBike = false;
+
+            for (Transport transport : transports) {
+                if (transport instanceof Car) {
+                    hasCar = true;
                 }
-                if (simpleNames.contains("Car") && simpleNames.contains("Bike")) {
-                    ownersWithCarAndBike.add(entry.getKey());
+                if (transport instanceof Bike) {
+                    hasBike = true;
+                }
+            }
+                if (hasCar && hasBike) {
+                owners.add(owner);
                 }
             }
         }
