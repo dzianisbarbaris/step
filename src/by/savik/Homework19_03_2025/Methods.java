@@ -42,24 +42,29 @@ public class Methods {
                 difference.add(s);
             }
         }
+        for (String s : set2) {
+            if (!set1.contains(s)) {
+                difference.add(s);
+            }
+        }
         return difference;
     }
 
-    public Integer findUniqueWords(List<String> words){
+    public Integer findUniqueWords(List<String> words) {
         Set<String> uniqueWords = new HashSet<>();
         uniqueWords.addAll(words);
         return uniqueWords.size();
     }
 
-    public List<String> sortList(List<String> list){
+    public List<String> sortList(List<String> list) {
         list.sort(new ListByStringLenghtComparator());
         return list;
     }
 
-    public String getFirstUniqueWord (List<String> words){
+    public String getFirstUniqueWord(List<String> words) {
         String uniqueWord = "no unique words";
-        for (int i = 0; i < words.size()-1; i++){
-            for (int j = i+1; j < words.size(); j++) {
+        for (int i = 0; i < words.size() - 1; i++) {
+            for (int j = i + 1; j < words.size(); j++) {
                 if (!words.get(i).equals(words.get(j))) {
                     uniqueWord = words.get(i);
                     break;
@@ -69,5 +74,19 @@ public class Methods {
         return uniqueWord;
     }
 
+    public Map<String, List<Integer>> splitList(List<Integer> list) {
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        Map<String, List<Integer>> splited = Map.of("Чётные", new ArrayList<>(), "Нечётные", new ArrayList<>());
+        for (Integer i : list) {
+            if (i % 2 == 0) {
+                splited.get("Чётные").add(i);
+            } else {
+                splited.get("Нечётные").add(i);
+            }
+        }
+        return splited;
+
+    }
 }
 

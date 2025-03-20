@@ -10,7 +10,17 @@ public class Main {
         Set<String> set1 = Set.of("Алексей", "Мария", "Дмитрий");
         Set<String> set2 = Set.of("Мария", "Сергей", "Алексей");
         List<String> words = List.of("кот", "собака", "кот", "птица", "рыба", "рыба");
+        List<String> words2 = new ArrayList<>(List.of("яблоко", "ананас", "киви", "банан"));
 
 
+        methods.removeDuplicates(names);
+        methods.getUniqueNumbers(numbers);
+        methods.hasDuplicates(names);
+        methods.getMatch(set1, set2);
+        methods.getDifference(set1, set2);
+        methods.findUniqueWords(words);
+        methods.sortList(words2);
+        methods.getFirstUniqueWord(words);
+        methods.splitList(numbers);
     }
 }
