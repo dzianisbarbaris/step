@@ -2,6 +2,8 @@ package by.savik.Transport2.manager;
 
 import by.savik.Transport2.comparator.TransportModelComparator;
 import by.savik.Transport2.comparator.TransportYearComparator;
+import by.savik.Transport2.model.Bike;
+import by.savik.Transport2.model.Car;
 import by.savik.Transport2.model.Transport;
 import by.savik.Transport2.model.User;
 
@@ -84,7 +86,7 @@ public class TransportService {
             int year = transport.getYear();
             if (year > currentYear - 4) {
                 transportByAge.get("Новые").add(transport);
-            } else if (year > currentYear - 11 && year < currentYear - 3) {
+            } else if (year > currentYear - 11) {
                 transportByAge.get("Средние").add(transport);
             } else {
                 transportByAge.get("Старые").add(transport);
@@ -116,7 +118,7 @@ public class TransportService {
         for (Transport transport : transports) {
             User user = transport.getUser();
             if(oldestTransportYear == transport.getYear()){
-                ownersWithOldestCar.put(user);
+                ownersWithOldestCar.add(user);
             }
         }
         return ownersWithOldestCar;
@@ -177,7 +179,7 @@ public class TransportService {
                 }
             }
                 if (hasCar && hasBike) {
-                owners.add(owner);
+                    ownersWithCarAndBike.add(owner);
                 }
             }
         }
