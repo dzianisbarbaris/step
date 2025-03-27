@@ -18,7 +18,7 @@ public class TicketManager {
     }
 
     public Map<TicketType, Long> countByType() {
-        EnumMap<TicketType, Long> ticketsByType = new EnumMap<>(TicketType.class);
+        Map<TicketType, Long> ticketsByType = new HashMap<>();
         for (Ticket ticket : soldTickets) {
             TicketType ticketType = ticket.getType();
             if (ticketsByType.containsKey(ticketType)){

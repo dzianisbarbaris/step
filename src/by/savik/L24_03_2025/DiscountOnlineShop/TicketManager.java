@@ -8,7 +8,7 @@ public class TicketManager {
     private DayOfWeek dayOfWeek;
 
     public int getDiscountedPrice(TicketType type, DayOfWeek day) {
-        int discount = (type.getBasePrice() * day.getDiscountPercent()) / 100;
+        int discount = type.getBasePrice() / 100 * day.getDiscountPercent();
         return type.getBasePrice() - discount;
     }
 
