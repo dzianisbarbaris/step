@@ -22,9 +22,9 @@ public class Task00 {
         System.out.println(student.getKey());
         System.out.println(student.getValue());
         List<Integer> integers = List.of(1, 2, 3);
-        printList(integers);
+       /* printList(integers);
         List<String> strings = List.of("1", "2", "3");
-        printList(strings);
+        printList(strings);*/
     }
 
     public static <T> T printTwice(T value){
@@ -33,11 +33,11 @@ public class Task00 {
         return value;
     }
 
-    public static void printList(Box<? extends  Number> box){
+    /*public static void printList(Box<? extends  Number> box){
         for (Number number : box) {
             System.out.println(number);
         }
-    }
+    }*/
     public static void printList(List<? super Cat> list){
         for (Object o : list) {
             System.out.println(o);
