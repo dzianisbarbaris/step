@@ -6,10 +6,7 @@ public class RandomPrickerMain {
 
         // Добавляем участников
         for (int i = 0; i < 20; i++) {
-            Participant participant = ParticipantFactory.next();
-            if (participant.getAge() >= 18) {
-                lotto.add(participant);
-            }
+            lotto.add(ParticipantFactory.next());
         }
 
         System.out.println("🎰 Первый розыгрыш:");
@@ -26,6 +23,8 @@ public class RandomPrickerMain {
         while ((participant = lotto.pick()) != null) {
             System.out.println("Выбран: " + participant);
         }
-        System.out.println(lotto.remaining());
+
+        lotto.ageToWinners();
+        System.out.println(lotto.ageToWinners());
     }
 }

@@ -2,15 +2,16 @@ package by.savik.RandomPicker;
 
 import java.util.*;
 
-public class LotteryMachine<T> {
-    private final List<T> allItems = new ArrayList<>();
-    private final Queue<T> queue = new LinkedList<>();
-    private static final int WINNERS_SIZE = 2;
-    private final Set<T> winners = new HashSet<>();
-    private boolean initialized;
+public class LotteryMachine<T extends Participant> {
+    private List<T> allItems = new ArrayList<>();
+    private Queue<T> queue = new LinkedList<>();
+    private static final int MAX_WINNERS = 2;
+    private Set<T> winners = new HashSet<>();
+    private Boolean initialized = false;
+    private int countRoundWinners = 0;
 
     public void add(T item) {
-        if (!initialized) {
+        if (!initialized && item.getAge() >= 18) {
             allItems.add(item);
         }
     }
@@ -25,13 +26,16 @@ public class LotteryMachine<T> {
         if (!initialized) {
             init();
         }
-        if (winners.size() < WINNERS_SIZE) {
-            T winner = queue.poll();
+        if (countRoundWinners == MAX_WINNERS) {
+            return null;
+        }
+        T winner = queue.poll();
+        if (winner != null) {
+            countRoundWinners++;
             winners.add(winner);
             allItems.remove(winner);
-            return winner;
         }
-        return null;
+        return winner;
     }
 
     public void printWinners() {
@@ -39,13 +43,32 @@ public class LotteryMachine<T> {
     }
 
     public void reset() {
+        initialized = false;
         queue.clear();
-        Collections.shuffle(allItems);
-        queue.addAll(allItems);
+        init();
+        countRoundWinners = 0;
     }
 
     public int remaining() {
         return queue.size();
+    }
+
+    public Map<String, Integer> ageToWinners() {
+        Map<String, Integer> winnersByAge = new HashMap<>(Map.of("18-30", 0, "30-50", 0, "50 и выше", 0));
+        for (T winner : winners) {
+            int age = winner.getAge();
+            if (age >= 18 && age < 30) {
+                Integer count = winnersByAge.get("18-30");
+                winnersByAge.put("18-30", ++count);
+            } else if (age >= 30 && age < 50) {
+                Integer count = winnersByAge.get("30-50");
+                winnersByAge.put("30-50", ++count);
+            } else {
+                Integer count = winnersByAge.get("50 и выше");
+                winnersByAge.put("50 и выше", ++count);
+            }
+        }
+        return winnersByAge;
     }
 
 
