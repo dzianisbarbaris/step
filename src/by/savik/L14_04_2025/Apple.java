@@ -4,12 +4,15 @@ public class Apple {
     private int weight;
     private Color color;
 
+    public Apple() {
+    }
+
     public Apple(int weight, Color color) {
         this.weight = weight;
         this.color = color;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 

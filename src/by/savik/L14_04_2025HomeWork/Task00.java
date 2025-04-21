@@ -96,7 +96,7 @@ public class Task00 {
 
     //Фильтрация строк по длине (Predicate + Lambda)
     private static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
-        list.removeIf((T t) -> !predicate.test(t));
+        list.removeIf(predicate);
         return list;
     }
 
@@ -150,9 +150,8 @@ public class Task00 {
         return result;
     }
 
-    //Копирование содержимого одного списка в другой
-    private static <T> List<T> copyList(List<T> list1, List<T> list2) {
-        list1.clear();
+    //Объединение двух списков
+    private static <T> List<T> mergeLists(List<T> list1, List<T> list2) {
         list1.addAll(list2);
         return list1;
     }
@@ -167,8 +166,8 @@ public class Task00 {
         return -1;
     }
 
-    //Объединение двух списков
-    private static <T> List<T> mergeLists(List<T> list1, List<T> list2) {
+    //Копирование содержимого одного списка в другой
+    private static <T> List<T> copyList(List<T> list1, List<T> list2) {
         List<T> result = new ArrayList<>();
         result.addAll(list1);
         result.addAll(list2);
