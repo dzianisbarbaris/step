@@ -3,6 +3,7 @@ package by.savik.Grocery;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GroceryMain {
@@ -53,12 +54,33 @@ public class GroceryMain {
                 .collect(Collectors.toList());
         System.out.println(top3NamesByPrise);
 
+        //6
         groceryItems.stream()
                 .forEach(item -> System.out.println("<" + item.getName() + "> : <" + item.getPrice() * 0.9 + "> Br"));
-
-        boolean b = groceryItems.stream()
+        //7
+        boolean anyMatch = groceryItems.stream()
                 .anyMatch(item -> item.getPrice() < 1);
+        System.out.println(anyMatch);
 
+        //8
+        boolean allMatch = groceryItems.stream()
+                .allMatch(item -> item.getPrice() > 0);
+        System.out.println(allMatch);
 
+        //9
+        Optional<GroceryItem> firstBeverage = groceryItems.stream()
+                .filter(item -> item.getCategory().equals(Category.VEGETABLE))
+                .findFirst();
+        if (firstBeverage.isPresent()) {
+            GroceryItem item = firstBeverage.get();
+            System.out.println(item);
+        }
+
+        //10
+        List<Category> uniqueCategories = groceryItems.stream()
+                .map(GroceryItem::getCategory)
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println(uniqueCategories);
     }
 }
