@@ -75,16 +75,23 @@ public class GroceryMain {
 
         List<String> collectPeek = customers.stream()
                 .peek(c -> System.out.println("Обрабатываем " + c.getName()))
-                .map(customer -> customer.getName())
-                .collect(Collectors.toList());
+                .map(Customer::getName)
+                .toList();
 
         List<String> collect = customers.stream()
-                .map(customer -> customer.getName())
+                .map(Customer::getName)
                 .skip(1)
                 .limit(2)
                 .collect(Collectors.toList());
         System.out.println(collect);
 
+        Map<Category, Set<String>> map = customers.stream()
+                .flatMap(customer -> customer.getShoppingList().stream())
+                .collect(Collectors.groupingBy(
+                        GroceryItem::getCategory,
+                        Collectors.flatMapping(item -> customers.stream()
+                                .filter(customer -> customer.getShoppingList().contains(item))
+                                .map(Customer::getName), Collectors.toSet())));
 
 
 
