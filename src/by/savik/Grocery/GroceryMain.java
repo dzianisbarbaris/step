@@ -1,9 +1,6 @@
 package by.savik.Grocery;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GroceryMain {
@@ -22,7 +19,78 @@ public class GroceryMain {
                 new GroceryItem("Печенье", Category.BAKERY, 18, true),
                 new GroceryItem("Кока-Кола", Category.BEVERAGE, 3, false)
         );
-        //1
+
+        List<Customer> customers = List.of(
+                new Customer("Андрей", List.of(
+                        new GroceryItem("Milk", Category.DAIRY, 1.2, true),
+                        new GroceryItem("Bread", Category.BAKERY, 0.8, true)
+                )),
+                new Customer("Ирина", List.of(
+                        new GroceryItem("Apple", Category.FRUIT, 0.5, true),
+                        new GroceryItem("Wine", Category.BEVERAGE, 5.0, false),
+                        new GroceryItem("Cheese", Category.DAIRY, 3.0, true)
+                )),
+                new Customer("Сергей", List.of(
+                        new GroceryItem("Eggs", Category.DAIRY, 2.0, true),
+                        new GroceryItem("Chocolate", Category.BAKERY, 1.5, false)
+                )),
+                new Customer("Валера", new ArrayList<>()),
+                new Customer("Семён", new ArrayList<>())
+        );
+
+        DoubleSummaryStatistics doubleSummaryStatistics = customers.stream()
+                .flatMap(customer -> customer.getShoppingList().stream())
+                .collect(Collectors.summarizingDouble(GroceryItem::getPrice));
+        System.out.println(doubleSummaryStatistics.getMax());
+        System.out.println(doubleSummaryStatistics.getAverage());
+
+        List<GroceryItem> allGroceryItems = customers.stream()
+                .flatMap(c -> c.getShoppingList().stream())
+                .toList();
+        System.out.println(allGroceryItems);
+
+        Long customersNum = customers.stream()
+                .map(Customer::getName).collect(Collectors.counting());
+        System.out.println(customersNum);
+
+        customers.stream()
+                .max(Comparator.comparingDouble(c -> c.getShoppingList().stream().
+                        mapToDouble(GroceryItem::getPrice).sum()))
+                .ifPresent(System.out::println);
+
+        Set<String> uniqueItems = customers.stream()
+                .flatMap(customer -> customer.getShoppingList()
+                        .stream().map(GroceryItem::getName)).collect(Collectors.toSet());
+        System.out.println(uniqueItems);
+
+        Optional<Customer> customerOptional = customers.stream()
+                .filter(customer -> customer.getShoppingList().isEmpty())
+                .findFirst();
+        customerOptional.ifPresent(customer -> System.out.println(customer.getName() + " Без покупок"));
+
+        Map<String, DoubleSummaryStatistics> summaryStatistics = customers.stream()
+                .collect(Collectors.toMap(Customer::getName, customer -> customer.getShoppingList()
+                        .stream().collect(Collectors.summarizingDouble(GroceryItem::getPrice))));
+        System.out.println(summaryStatistics);
+
+        List<String> collectPeek = customers.stream()
+                .peek(c -> System.out.println("Обрабатываем " + c.getName()))
+                .map(customer -> customer.getName())
+                .collect(Collectors.toList());
+
+        List<String> collect = customers.stream()
+                .map(customer -> customer.getName())
+                .skip(1)
+                .limit(2)
+                .collect(Collectors.toList());
+        System.out.println(collect);
+
+
+
+
+
+
+       /* //1
         List<GroceryItem> dairyItems = groceryItems.stream()
                 .filter(d -> d.getCategory().equals(Category.DAIRY))
                 .collect(Collectors.toList());
@@ -82,5 +150,6 @@ public class GroceryMain {
                 .distinct()
                 .collect(Collectors.toList());
         System.out.println(uniqueCategories);
+    }*/
     }
 }
