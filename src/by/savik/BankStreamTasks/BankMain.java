@@ -65,7 +65,7 @@ public class BankMain {
                 .flatMap(bankAccount -> bankAccount.getTransactions().stream())
                 .filter(transaction -> Transaction.Type.WITHDRAWAL == (transaction.getType()))
                 .sorted(Comparator.comparingDouble(Transaction::getAmount).reversed())
-                .*/
+                .limit(2).*/
 
         Map<String, Integer> transactionsCount = accounts.stream()
                 .collect(Collectors.groupingBy(BankAccount::getAccountNumber, Collectors.summingInt(t -> t.getTransactions().size())));
@@ -75,5 +75,12 @@ public class BankMain {
                 .filter(bankAccount -> bankAccount.getTransactions().isEmpty())
                 .findAny();
         optional.ifPresent(System.out::println);
+
+        Set<String> depositOwners = accounts.stream()
+                .collect(Collectors.filtering(bankAccount -> bankAccount.getTransactions().stream()
+                                .anyMatch(transaction -> transaction.getType() == Transaction.Type.DEPOSIT),
+                        Collectors.mapping(BankAccount::getOwnerName, Collectors.toSet())));
+        System.out.println(depositOwners);
+
     }
 }
