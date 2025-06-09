@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<style>
+    div.container {
+    width: 100%;
+    overflow: auto;
+    }
+    div.container div {
+    width:33%;
+    float:left;
+    }
+    div.container div p {
+    font-weight:bold;
+    }
+    table, th, td {
+    border: 1px solid, black;
+    text-align: center;
+    }
+    table {
+    width:100%;
+    }
+    th {
+    background-color:cyan;
+    }
+    #style_red {
+    background-color:red;
+    }
+    .td_bold {
+    font-weight:bold;
+    background-color:#FFC0C7;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title> второй урок по HTML</title>
+</head>
+<body>
+<p>Тут не жирный</p>
+<em>Тут курсив</em><br>
+<strong>Тут жирный</strong>
+<div class="container">
+<div style="background-color:#FFF4A3;">
+    <h2>Минск</h2>
+    <p>Минск - столица Беларуси</p>
+    <p>Население 9 млн</p>
+</div>
+<div style="background-color:#FFC0C7;">
+    <h2>Москва</h2>
+    <p>Москва - столица России</p>
+    <p>Население 145 млн</p>
+</div>
+<div style="background-color:#D9EEE1;">
+    <h2>Варшава</h2>
+    <p>Варшава - столица Польши</p>
+    <p>Население 37 млн</p>
+</div>
+</div>
+<div class="mytable">
+    <table>
+        <tr>
+            <th>Person 1</th>
+            <th>Person 2</th>
+            <th>Person 3</th>
+        </tr>
+        <tr>
+            <td>Dima</td>
+            <td id="style_red">Dzianis</td>
+            <td>Ivan</td>
+        </tr>
+        <tr>
+            <td class="td_bold">35</td>
+            <td class="td_bold">38</td>
+            <td class="td_bold">27</td>
+        </tr>
+    </table>
+</div>
+<hr color="red" size="5px">
+</body>
+</html>
