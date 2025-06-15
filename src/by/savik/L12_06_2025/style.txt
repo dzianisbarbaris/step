@@ -1,0 +1,145 @@
+CSS (Cascading Style Sheets) — это язык стилей
+CSS отвечает за внешний вид:
+цвета, шрифты, размеры, расположение элементов.
+Есть три способа подключения CSS:
+
+1. **Внутренний** — через тег `<style>` в `<head>`.
+2. **Внешний** — через отдельный файл `.css`,
+    подключенный с помощью тега `<link>`.
+3. **Инлайн** — через атрибут `style`
+             (не рекомендуется для больших проектов).
+<head>
+  <title>Моя страница</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+**Синтаксис**:
+```css
+тег {
+  свойство: значение;
+}
+```
+p {
+  color: blue;
+  font-size: 16px;
+}
+
+<div class="box size test red-color">Блок 1</div>
+
+Обращение к элементам
+
+1. тег {
+  свойство: значение;
+}
+p {
+  color: blue;
+  font-size: 16px;
+}
+2. Обращение к классам
+.имя-класса {
+  свойство: значение;
+}
+.box {
+  background-color: lightgreen;
+  padding: 10px, 5px, 10px, 8px;
+}
+
+3. Обращение к ID
+
+#имя-id {
+  свойство: значение;
+}
+<div id="my_header">Заголовок</div>
+#my_header {
+  background-color: navy;
+  color: white;
+  text-align: center;
+}
+
+4. Обращение к вложенным элементам
+
+родитель потомок {
+  свойство: значение;
+}
+<div class="container">
+  <p>Абзац внутри</p>
+  <div>
+    <p>Абзац глубже</p>
+  </div>
+</div>
+<p>Абзац снаружи</p>
+
+.container p {
+  color: red;
+}
+
+Дочерний селектор (`>`)
+Обращается только к **непосредственным**
+дочерним элементам (на один уровень ниже).
+
+<div class="container">
+  <p>Прямой потомок</p>
+  <div>
+    <p>Не прямой потомок</p>
+  </div>
+</div>
+.container > p {
+  font-weight: bold;
+}
+
+Комбинирование селекторов
+
+#main .box span {
+  color: purple;
+}
+
+5. Дополнительные полезные селекторы
+
+   Универсальный селектор (`*`)
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+Селектор по атрибуту
+<input type="text">
+
+input[type="text"] {
+  border: 1px solid blue;
+}
+
+Псевдоклассы
+
+<button class="btn">Нажми</button>
+.btn:hover {
+  background-color: yellow;
+}
+
+
+`color` — цвет текста.
+`font-size` — размер шрифта.
+`font-family` — тип шрифта.
+`background-color` — цвет фона.
+`text-align` — выравнивание текста.
+ padding - внутренний отступ
+ margin — внешний отступ
+`border` — рамка вокруг блока.  border: 2px solid black;
+ border-radius: 10px;
+ width - ширина
+ height - высота
+
+Специфичность**: Чем точнее селектор, тем выше его приоритет.
+ Например, `#id` перебивает `.class`, а `.class` перебивает `тег`
+<p id="special" class="text">
+ p { color: blue; }
+  .text { color: red; }
+  #special { color: green; }
+
+
+ box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+ outline: none;
+
+
+
+

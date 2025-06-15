@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> третий урок по HTML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<ul class="menu">
+    <li><a href="#">Ссылка 1</a></li>
+    <li><a href="#">Ссылка 2</a></li>
+</ul>
+<form action="/submit" method="post">
+    <label for="username">Имя</label>
+    <input type="text" name="username">
+    <input type="radio" name="gender" value="male" checked> Мужской
+    <input type="radio" name="gender" value="female"> Женский
+    <input type="checkbox" name="hobby" value="reading" checked> Чтение
+    <input type="checkbox" name="hobby" value="gaming"> Игры
+    <input type="checkbox" name="hobby" value="sports"> Спорт
+    <label for="city">Город</label>
+    <label>
+        <select name="city">
+            <option value="moscow">Москва</option>
+            <option value="vitebsk" selected>Витебск</option>
+            <option value="minsk">Минск</option>
+        </select>
+    </label>
+    <button type="button" onclick="document.getElementById('my_dialog').showModal()"
+    class="btn">Отправить</button>
+    <!-- <button type="submit">Отправить</button> -->
+</form>
+<dialog id="my_dialog">
+        <p>Отправили данные!</p>
+        <button type="button" onclick="this.parentElement.close()">Закрыть</button>
+    </dialog>
+    </body>
+</html>
