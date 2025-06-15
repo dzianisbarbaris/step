@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Задача: Создание формы регистрации с HTML и CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="/register" method="post">
+    <h2 id="content">Регистрация</h2>
+    <label for="username">Имя:</label>
+    <input type="text" name="username" placeholder="Ваше имя" required>
+    <label for="email">Email:</label>
+    <input type="text" name="email" placeholder="Ваш email" required>
+    <label for="password">Пароль:</label>
+    <input type="text" name="password" placeholder="Ваш пароль" required>
+    <label for="gender">Пол:</label>
+    <input type="radio" name="gender" value="male" checked> Мужской
+    <input type="radio" name="gender" value="female"> Женский
+    <label for="hobby">Интересы:</label>
+    <input type="checkbox" name="hobby" value="music"> Музыка
+    <input type="checkbox" name="hobby" value="sports"> Спорт
+    <input type="checkbox" name="hobby" value="reading"> Чтение
+    <label for="country">Страна:</label>
+    <label>
+        <select name="country">
+            <option value="russia" selected>Россия</option>
+            <option value="belarus">Беларусь</option>
+            <option value="ukraine">Украина</option>
+            <option value="kazakhstan">Казахстан</option>
+        </select>
+    </label>
+    <button type="button" onclick="document.getElementById('my_dialog').showModal()"
+    class="btn">Зарегистрироваться</button>
+</form>
+<dialog id="my_dialog">
+        <p>Регистрация успешна!</p>
+        <button type="button" onclick="this.parentElement.close()">Закрыть</button>
+    </dialog>
+</body>
+</html>
