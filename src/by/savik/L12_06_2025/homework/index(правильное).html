@@ -1,0 +1,89 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Форма регистрации</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <form action="/register" method="post" class="form">
+    <h2>Регистрация</h2>
+    
+    <label for="username">Имя:</label>
+    <input type="text" id="username" name="username" placeholder="Ваше имя" class="input" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Ваш email" class="input" required>
+    
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" placeholder="Ваш пароль" class="input" required>
+    
+    <p>Пол:</p>
+    <input type="radio" id="male" name="gender" value="male" checked>
+    <label for="male">Мужской</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Женский</label>
+    
+    <p>Интересы:</p>
+    <input type="checkbox" id="music" name="interest" value="music">
+    <label for="music">Музыка</label>
+    <input type="checkbox" id="sports" name="interest" value="sports">
+    <label for="sports">Спорт</label>
+    <input type="checkbox" id="reading" name="interest" value="reading">
+    <label for="reading">Чтение</label>
+    
+    <label for="country">Страна:</label>
+    <select id="country" name="country" class="input">
+      <option value="russia" selected>Россия</option>
+      <option value="usa">США</option>
+      <option value="germany">Германия</option>
+    </select>
+    
+    <button onclick="document.getElementById('myDialog').showModal()" class="btn">Зарегистрироваться</button>
+  </form>
+  
+<dialog id="myDialog">
+  <p>Регистрация успешна!</p>
+  <button onclick="this.parentElement.close()">Закрыть</button>
+</dialog>
+</body>
+</html>
