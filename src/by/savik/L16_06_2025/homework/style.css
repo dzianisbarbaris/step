@@ -1,0 +1,49 @@
+.container {
+    width: 350px;
+    border: 2px solid black;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    margin: auto;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+.avatar {
+    margin-top: 30px;
+    width: 80;
+    height: 80;
+    border-radius: 50%;
+    float: left;
+}
+.name {
+    font-size: large;
+    text-align: center;
+}
+.info {
+    font-size: small;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    background-color: ivory;
+    border-radius: 10px;
+}
+.star {
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    color: rgba(255, 217, 0, 0.5);
+}
+.name .about .btn {
+    display: block;
+}
+
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
