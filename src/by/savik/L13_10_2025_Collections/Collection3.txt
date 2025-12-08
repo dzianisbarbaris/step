@@ -1,0 +1,94 @@
+// Продолжение класса SimpleStoreTasks (добавьте эти методы)
+
+/**
+ * Задача 11: Найти общую стоимость всех товаров на складе (price * stock для всех товаров)
+ * @param store - магазин
+ * @return double общая стоимость (сумма price * stock)
+ */
+public static double calculateTotalInventoryValue(Store store) {
+    return 0.0
+}
+
+/**
+ * Задача 12: Найти корзины с общей стоимостью выше заданного порога
+ * @param store - магазин
+ * @param threshold - порог стоимости корзины
+ * @return List<Cart> корзины с totalPrice > threshold
+ */
+public static List<Cart> findExpensiveCarts(Store store, double threshold) {
+    return new ArrayList<>();
+}
+
+/**
+ * Задача 13: Подсчитать количество товаров каждой категории в магазине
+ * @param store - магазин
+ * @return Map<Category, Integer> количество товаров по категориям
+ */
+public static Map<Category, Integer> countProductsByCategory(Store store) {
+    return new HashMap<>();
+}
+
+/**
+ * Задача 14: Найти самый дорогой товар в каждой категории
+ * @param store - магазин
+ * @return Map<Category, Product> категория -> самый дорогой товар
+ */
+public static Map<Category, Product> findMostExpensiveInCategory(Store store) {
+    return new HashMap<>();
+}
+
+/**
+ * Задача 15: Проверить, все ли товары в корзинах имеют stock > 0
+ * @param store - магазин
+ * @return boolean true, если все товары в корзинах доступны (stock > 0)
+ */
+public static boolean allProductsInCartsAvailable(Store store) {
+    return false;
+}
+
+/**
+ * Задача 16: Отсортировать товары магазина по цене по убыванию
+ * @param store - магазин
+ * @return List<Product> отсортированные товары
+ */
+public static List<Product> sortProductsByPriceDescending(Store store) {
+    return new ArrayList<>();
+}
+
+/**
+ * Задача 17: Найти количество корзин, содержащих конкретный товар
+ * @param store - магазин
+ * @param productId - идентификатор товара
+ * @return int количество корзин с этим товаром
+ */
+public static int countCartsWithProduct(Store store, String productId) {
+    return 0;
+}
+
+/**
+ * Задача 18: Вычислить среднюю цену товаров в категории
+ * @param store - магазин
+ * @param category - категория
+ * @return double средняя цена товаров в категории
+ */
+public static double calculateAveragePriceByCategory(Store store, Category category) {
+    return 0.0;
+}
+
+/**
+ * Задача 19: Найти корзины, где количество товаров больше среднего по всем корзинам
+ * @param store - магазин
+ * @return List<Cart> корзины с количеством элементов > среднего
+ */
+public static List<Cart> findCartsAboveAverageSize(Store store) {
+    return new ArrayList<>();
+}
+
+/**
+ * Задача 20: Подсчитать общее количество stock товаров в корзинах (сумма stock для уникальных товаров)
+ * @param store - магазин
+ * @return int сумма stock уникальных товаров в корзинах
+ */
+public static int totalStockInCarts(Store store) {
+    return 0;
+}
